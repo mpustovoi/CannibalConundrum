@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cannibal:stone_saw"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "cannibal:entities/cannibal_butcher"
+}

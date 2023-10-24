@@ -1,0 +1,5 @@
+// 1.20.1	2023-10-20T00:49:46.0138716	Loot Tables
+193011486ce3e8e2510341997c797260357ea630 data/cannibal/loot_tables/blocks/bone_trap.json
+fe7c2d10a700e1d20ecb2e9b4603f16b5929ece2 data/cannibal/loot_tables/blocks/skull_lamp.json
+e66f79474dc0ec88cd59714399ef509a7e0edee3 data/cannibal/loot_tables/entities/cannibal.json
+7d671720347d165dd76856654a8b2d2505f51fb3 data/cannibal/loot_tables/entities/cannibal_butcher.json

@@ -1,0 +1,142 @@
+{
+  "bone_trap_snap": {
+    "sounds": [
+      "cannibal:bone_trap_snap"
+    ]
+  },
+  "cannibal_butcher_death": {
+    "sounds": [
+      "cannibal:cannibal_butcher_death"
+    ]
+  },
+  "cannibal_butcher_hurt1": {
+    "sounds": [
+      "cannibal:cannibal_butcher_hurt1"
+    ]
+  },
+  "cannibal_butcher_hurt2": {
+    "sounds": [
+      "cannibal:cannibal_butcher_hurt2"
+    ]
+  },
+  "cannibal_butcher_hurt3": {
+    "sounds": [
+      "cannibal:cannibal_butcher_hurt3"
+    ]
+  },
+  "cannibal_butcher_idle1": {
+    "sounds": [
+      "cannibal:cannibal_butcher_idle1"
+    ]
+  },
+  "cannibal_butcher_idle2": {
+    "sounds": [
+      "cannibal:cannibal_butcher_idle2"
+    ]
+  },
+  "cannibal_butcher_idle3": {
+    "sounds": [
+      "cannibal:cannibal_butcher_idle3"
+    ]
+  },
+  "cannibal_butcher_idle4": {
+    "sounds": [
+      "cannibal:cannibal_butcher_idle4"
+    ]
+  },
+  "cannibal_butcher_idle5": {
+    "sounds": [
+      "cannibal:cannibal_butcher_idle5"
+    ]
+  },
+  "cannibal_butcher_spot_target": {
+    "sounds": [
+      "cannibal:cannibal_butcher_spot_target"
+    ]
+  },
+  "cannibal_butcher_start_sprint": {
+    "sounds": [
+      "cannibal:cannibal_butcher_start_sprint"
+    ]
+  },
+  "cannibal_death": {
+    "sounds": [
+      "cannibal:cannibal_death"
+    ]
+  },
+  "cannibal_hurt1": {
+    "sounds": [
+      "cannibal:cannibal_hurt1"
+    ]
+  },
+  "cannibal_hurt2": {
+    "sounds": [
+      "cannibal:cannibal_hurt2"
+    ]
+  },
+  "cannibal_hurt3": {
+    "sounds": [
+      "cannibal:cannibal_hurt3"
+    ]
+  },
+  "cannibal_idle1": {
+    "sounds": [
+      "cannibal:cannibal_idle1"
+    ]
+  },
+  "cannibal_idle2": {
+    "sounds": [
+      "cannibal:cannibal_idle2"
+    ]
+  },
+  "cannibal_idle3": {
+    "sounds": [
+      "cannibal:cannibal_idle3"
+    ]
+  },
+  "cannibal_idle4": {
+    "sounds": [
+      "cannibal:cannibal_idle4"
+    ]
+  },
+  "stonesaw_rev1": {
+    "sounds": [
+      "cannibal:stonesaw_rev1"
+    ]
+  },
+  "stonesaw_rev2": {
+    "sounds": [
+      "cannibal:stonesaw_rev2"
+    ]
+  },
+  "stonesaw_rev3": {
+    "sounds": [
+      "cannibal:stonesaw_rev3"
+    ]
+  },
+  "stonesaw_rev4": {
+    "sounds": [
+      "cannibal:stonesaw_rev4"
+    ]
+  },
+  "stonesaw_reved": {
+    "sounds": [
+      "cannibal:stonesaw_reved"
+    ]
+  },
+  "stonesaw_reved_loop": {
+    "sounds": [
+      "cannibal:stonesaw_reved_loop"
+    ]
+  },
+  "stonesaw_swing1": {
+    "sounds": [
+      "cannibal:stonesaw_swing1"
+    ]
+  },
+  "stonesaw_swing2": {
+    "sounds": [
+      "cannibal:stonesaw_swing2"
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bowl"
+    },
+    "F": {
+      "item": "cannibal:fresh_flesh"
+    },
+    "M": {
+      "item": "minecraft:brown_mushroom"
+    }
+  },
+  "pattern": [
+    "FFM",
+    " B "
+  ],
+  "result": {
+    "item": "cannibal:fresh_chili"
+  },
+  "show_notification": true
+}

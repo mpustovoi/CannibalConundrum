@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "cannibal:block/skull_lamp",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "cannibal:block/skull_lamp"
+    },
+    "facing=south": {
+      "model": "cannibal:block/skull_lamp",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "cannibal:block/skull_lamp",
+      "y": 270
+    }
+  }
+}

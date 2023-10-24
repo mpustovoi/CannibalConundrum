@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "cannibal:cannibal_village",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1123876575,
+    "spacing": 34,
+    "separation": 8
+  }
+}
