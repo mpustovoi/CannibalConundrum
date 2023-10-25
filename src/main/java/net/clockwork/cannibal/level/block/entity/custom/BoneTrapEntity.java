@@ -1,6 +1,5 @@
 package net.clockwork.cannibal.level.block.entity.custom;
 
-import net.clockwork.cannibal.level.block.custom.BoneTrap;
 import net.clockwork.cannibal.level.block.entity.ModBlockEntities;
 import net.clockwork.cannibal.util.MovementUtil;
 import net.minecraft.core.BlockPos;
@@ -15,7 +14,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
@@ -74,6 +72,7 @@ public class BoneTrapEntity extends BaseEntityBlock {
     protected void saveAdditional(@NotNull CompoundTag pTag) {
         super.saveAdditional(pTag);
         pTag.putBoolean("closed", this.occupied);
+        pTag.putInt("snares", this.snareTotal);
     }
 
     @Override
@@ -81,6 +80,9 @@ public class BoneTrapEntity extends BaseEntityBlock {
         super.load(pTag);
         if (pTag.contains("closed")) {
             this.occupied = pTag.getBoolean("closed");
+        }
+        if (pTag.contains("snares")) {
+            this.snareTotal = pTag.getInt("snares");
         }
     }
 

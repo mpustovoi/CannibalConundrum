@@ -2,6 +2,7 @@ package net.clockwork.cannibal.datagen;
 
 import net.clockwork.cannibal.Clockwork;
 import net.clockwork.cannibal.level.block.ModBlocks;
+import net.clockwork.cannibal.level.damage.ModDamageTypes;
 import net.clockwork.cannibal.level.effect.ModEffects;
 import net.clockwork.cannibal.level.entity.ModEntity;
 import net.clockwork.cannibal.level.item.ModItems;
@@ -14,8 +15,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.RegistryObject;
 import org.apache.commons.lang3.text.WordUtils;
-
-import javax.swing.text.html.parser.Entity;
 
 public class ModLanguageProvider extends LanguageProvider {
     public ModLanguageProvider(PackOutput output) {
@@ -43,5 +42,7 @@ public class ModLanguageProvider extends LanguageProvider {
         }
 
         add("creativemodetab.clockwork", "Cannibal Conundrum");
+        add(ModDamageTypes.BONE_TRAP.location().toLanguageKey(), "%1$s got trapped");
+        add("death.attack." + ModDamageTypes.BONE_TRAP.location().toLanguageKey(), "%1$s got trapped");
     }
 }

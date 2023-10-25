@@ -5,7 +5,9 @@ import net.clockwork.cannibal.level.entity.ModEntity;
 import net.clockwork.cannibal.level.entity.custom.Cannibal;
 import net.clockwork.cannibal.level.item.ModItems;
 import net.clockwork.cannibal.level.item.custom.StoneSawItem;
+import net.clockwork.cannibal.util.MovementUtil;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -39,6 +41,9 @@ public class CommonForgeEvents {
                 ItemEntity entity = new ItemEntity(event.getEntity().level(), pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModItems.BONE_MASK.get(), 1));
                 event.getEntity().level().addFreshEntity(entity);
             }
+        }
+        if (event.getEntity() instanceof ServerPlayer serverPlayer) {
+            MovementUtil.enableMovement(serverPlayer, true);
         }
     }
 

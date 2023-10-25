@@ -43,17 +43,13 @@ public abstract class DefaultGeoBiPedalModel<T extends LivingEntity & GeoAnimata
         float partialTick = Minecraft.getInstance().getPartialTick();
         float speed = 0.0F;
         float position = 0.0F;
-
         if (animatable.isAlive()) {
             speed = animatable.walkAnimation.speed(partialTick);
             position = animatable.walkAnimation.position(partialTick);
             if (speed > 1.0F) speed = 1.0F;
         }
         if (leftArm != null && rightArm != null && this.shouldAnimateArms()) {
-            if (animatable.swinging) {
-                rightArm.updateRotation(0.0F, -0.15707964F, 0.0F);
-                rightArm.updateRotation(-0.0F + Mth.cos(animatable.attackAnim * 0.19F) * 0.5F, 0.0F, 0.0F);
-            } else {
+            if (!animatable.swinging) {
                 leftArm.updateRotation(Mth.cos(position * 0.6662F + (float) Math.PI) * 1.4F * speed * 0.5F, 0.0F, 0.0F);
                 rightArm.updateRotation(Mth.cos(position * 0.6662F) * 1.4F * speed * 0.5F, 0.0F, 0.0F);
             }

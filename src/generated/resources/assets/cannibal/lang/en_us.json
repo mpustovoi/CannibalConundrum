@@ -1,7 +1,9 @@
 {
   "block.cannibal.bone_trap": "Bone Trap",
   "block.cannibal.skull_lamp": "Skull Lamp",
+  "cannibal.damage_source.bone_trap": "%1$s got trapped",
   "creativemodetab.clockwork": "Cannibal Conundrum",
+  "death.attack.cannibal.damage_source.bone_trap": "%1$s got trapped",
   "effect.cannibal.cannibalism": "Cannibalism",
   "entity.cannibal.cannibal": "Cannibal",
   "entity.cannibal.cannibal_butcher": "Cannibal Butcher",

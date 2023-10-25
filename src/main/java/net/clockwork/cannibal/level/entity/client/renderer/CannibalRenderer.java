@@ -3,23 +3,29 @@ package net.clockwork.cannibal.level.entity.client.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import net.clockwork.cannibal.Clockwork;
 import net.clockwork.cannibal.level.entity.client.model.CannibalModel;
 import net.clockwork.cannibal.level.entity.custom.Cannibal;
 import net.minecraft.client.model.AnimationUtils;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
 import software.bernie.example.entity.DynamicExampleEntity;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.cache.object.GeoBone;
+import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.layer.BlockAndItemGeoLayer;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 
 import javax.annotation.Nullable;
+
+import java.time.Clock;
+import java.util.Optional;
 
 import static net.minecraft.client.model.geom.PartNames.*;
 
@@ -60,8 +66,7 @@ public class CannibalRenderer extends GeoEntityRenderer<Cannibal> {
                     if (stack.getItem() instanceof ShieldItem) {
                         poseStack.translate(0, 0.125, -0.25);
                     }
-                }
-                else if (stack == CannibalRenderer.this.offhandItem) {
+                } else if (stack == CannibalRenderer.this.offhandItem) {
                     poseStack.mulPose(Axis.XP.rotationDegrees(-90f));
 
                     if (stack.getItem() instanceof ShieldItem) {
@@ -78,6 +83,15 @@ public class CannibalRenderer extends GeoEntityRenderer<Cannibal> {
     @Override
     public void preRender(PoseStack poseStack, Cannibal animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+
+        Optional<GeoBone> rightArm = model.getBone("right_arm");
+
+        if (animatable.swinging && rightArm.isPresent()) {
+            float attackTime = Mth.lerp(animatable.getAttackAnim(partialTick), 1.0F, 0.0F);
+            float f = Mth.sin(attackTime * (float) Math.PI);
+            float f1 = Mth.sin((1.0F - (1.0F - attackTime) * (1.0F - attackTime)) * (float) Math.PI);
+            rightArm.get().updateRotation(f * 2.2F - f1 * 0.5F, 0.15707964F, attackTime);
+        }
 
         this.mainHandItem = animatable.getMainHandItem();
         this.offhandItem = animatable.getOffhandItem();

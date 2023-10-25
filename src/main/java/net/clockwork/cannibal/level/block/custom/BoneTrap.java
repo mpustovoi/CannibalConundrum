@@ -4,6 +4,7 @@ import net.clockwork.cannibal.level.block.VoxelShapes;
 import net.clockwork.cannibal.level.block.custom.base.AnimatedItem;
 import net.clockwork.cannibal.level.block.custom.base.BaseHorizontalEntityBlock;
 import net.clockwork.cannibal.level.block.entity.custom.BoneTrapEntity;
+import net.clockwork.cannibal.level.damage.ModDamageTypes;
 import net.clockwork.cannibal.level.entity.custom.CannibalButcher;
 import net.clockwork.cannibal.level.sounds.ModSounds;
 import net.clockwork.cannibal.util.Misc;
@@ -12,8 +13,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -23,7 +22,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -58,8 +56,8 @@ public class BoneTrap extends BaseHorizontalEntityBlock implements AnimatedItem 
                 } else if (!(livingEntity instanceof CannibalButcher)){
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 10, false, false, false));
                 }
-                pEntity.teleportTo(pPos.getX() + 0.5F, pPos.getY(), pPos.getZ() + 0.5F);
-                pEntity.hurt(Misc.damageSource(DamageTypes.CACTUS, pLevel), 5.0F);
+                livingEntity.teleportTo(pPos.getX() + 0.5F, pPos.getY(), pPos.getZ() + 0.5F);
+                livingEntity.hurt(Misc.damageSource(ModDamageTypes.BONE_TRAP, pLevel), 5.0F);
                 pLevel.playSound(null, pPos, ModSounds.BONE_TRAP_SNAP.get(), SoundSource.BLOCKS);
             }
         }
