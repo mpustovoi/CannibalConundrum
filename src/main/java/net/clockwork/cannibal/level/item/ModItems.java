@@ -30,13 +30,17 @@ public class ModItems {
     public static final RegistryObject<Item> FRESH_FLESH = ITEMS.register("fresh_flesh", () -> new FleshItem(new Item.Properties().food(ModFoods.FRESH_FLESH)));
     public static final RegistryObject<Item> FRESH_CHILI = ITEMS.register("fresh_chili", () -> new FreshChili(new Item.Properties().food(ModFoods.FRESH_CHILI)));
 
-    /** Animated Items **/
-    public static final RegistryObject<Item> BONE_TRAP = ITEMS.register("bone_trap", () -> new BoneTrapItem(ModBlocks.BONE_TRAP.get(), new Item.Properties()));
-
     /** Spawn Eggs **/
     public static final RegistryObject<Item> CANNIBAL_SPAWN_EGG = registerEgg("cannibal_spawn_egg", ModEntity.CANNIBAL, new Color(174, 160, 149), new Color(171, 32, 46));
     public static final RegistryObject<Item> CANNIBAL_BUTCHER_SPAWN_EGG = registerEgg("cannibal_butcher_spawn_egg", ModEntity.CANNIBAL_BUTCHER, new Color(213, 210, 198), new Color(216, 168, 92));
 
+    public static void loadAnimatedItemsClient() {
+        ITEMS.register("bone_trap", () -> new BoneTrapItem(ModBlocks.BONE_TRAP.get(), new Item.Properties()));
+    }
+
+    public static void loadAnimatedItemsServer() {
+        ITEMS.register("bone_trap", () -> new BlockItem(ModBlocks.BONE_TRAP.get(), new Item.Properties()));
+    }
 
     public static RegistryObject<Item> registerEgg(String name, Supplier<? extends EntityType<? extends Mob>> entityType, Color backgroundColor, Color highlightColor) {
         return ITEMS.register(name, () -> new ForgeSpawnEggItem(entityType, backgroundColor.getRGB(), highlightColor.getRGB(), new Item.Properties().stacksTo(16)));
