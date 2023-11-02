@@ -11,6 +11,8 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.loading.FMLLoader;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -35,6 +37,10 @@ public class ModBlocks {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         if (!animatedBlock) {
             registerBlockItem(name, toReturn);
+        } else {
+            if (FMLLoader.getDist() != Dist.CLIENT) {
+                registerBlockItem(name, toReturn);
+            }
         }
         return toReturn;
     }

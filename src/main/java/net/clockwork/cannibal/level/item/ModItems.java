@@ -7,7 +7,9 @@ import net.clockwork.cannibal.level.item.custom.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.*;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.ForgeSpawnEggItem;
+import net.minecraftforge.fml.loading.FMLLoader;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -34,12 +36,10 @@ public class ModItems {
     public static final RegistryObject<Item> CANNIBAL_SPAWN_EGG = registerEgg("cannibal_spawn_egg", ModEntity.CANNIBAL, new Color(174, 160, 149), new Color(171, 32, 46));
     public static final RegistryObject<Item> CANNIBAL_BUTCHER_SPAWN_EGG = registerEgg("cannibal_butcher_spawn_egg", ModEntity.CANNIBAL_BUTCHER, new Color(213, 210, 198), new Color(216, 168, 92));
 
-    public static void loadAnimatedItemsClient() {
-        ITEMS.register("bone_trap", () -> new BoneTrapItem(ModBlocks.BONE_TRAP.get(), new Item.Properties()));
-    }
-
-    public static void loadAnimatedItemsServer() {
-        ITEMS.register("bone_trap", () -> new BlockItem(ModBlocks.BONE_TRAP.get(), new Item.Properties()));
+    public static void loadAnimatedItems() {
+        if (FMLLoader.getDist() == Dist.CLIENT) {
+            ITEMS.register("bone_trap", () -> new BoneTrapItem(ModBlocks.BONE_TRAP.get(), new Item.Properties()));
+        }
     }
 
     public static RegistryObject<Item> registerEgg(String name, Supplier<? extends EntityType<? extends Mob>> entityType, Color backgroundColor, Color highlightColor) {

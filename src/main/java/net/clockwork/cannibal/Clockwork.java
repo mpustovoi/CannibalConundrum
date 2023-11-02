@@ -46,11 +46,7 @@ public class Clockwork {
 
         ModEntity.ENTITIES.register(modEventBus);
 
-        if (FMLLoader.getDist() == Dist.CLIENT) { // TODO Hacky workaround.
-            ModItems.loadAnimatedItemsClient();
-        } else {
-            ModItems.loadAnimatedItemsServer();
-        }
+        ModItems.loadAnimatedItems();
 
         modEventBus.addListener(this::commonSetup);
     }
