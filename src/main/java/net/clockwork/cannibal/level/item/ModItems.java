@@ -22,9 +22,9 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Clockwork.MOD_ID);
 
 
-    public static final RegistryObject<Item> BONE_SWORD = ITEMS.register("bone_sword", () -> new SwordItem(Tiers.GOLD, 6, -2.4F, new Item.Properties().rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> BONE_SWORD = ITEMS.register("bone_sword", () -> new SwordItem(Tiers.GOLD, 5, -2.4F, new Item.Properties().rarity(Rarity.RARE)));
 
-    public static final RegistryObject<Item> BONE_MASK = ITEMS.register("bone_mask", () -> new BoneMaskItem(ArmorMaterials.GOLD, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> BONE_MASK = ITEMS.register("bone_mask", () -> new BoneMaskItem(ModArmorMaterials.BONE, ArmorItem.Type.HELMET, new Item.Properties()));
 
     public static final RegistryObject<Item> STONE_SAW = ITEMS.register("stone_saw", () -> new StoneSawItem(Tiers.DIAMOND, 9, -3.5F, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 

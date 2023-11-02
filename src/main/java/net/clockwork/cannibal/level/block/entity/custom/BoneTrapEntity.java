@@ -22,7 +22,7 @@ import software.bernie.geckolib.core.object.PlayState;
 public class BoneTrapEntity extends BaseEntityBlock {
     public int releaseTicks = 0;
     public int timeSinceRelease = 0;
-    public boolean occupied = false;
+    public boolean occupied = true;
     public Entity occupiedBy = null;
     public int snareTotal = 0;
 
@@ -36,6 +36,9 @@ public class BoneTrapEntity extends BaseEntityBlock {
         if (this.occupied && this.releaseTicks <= 60) {
             this.releaseTicks++;
             this.timeSinceRelease = 0;
+            if (this.occupiedBy != null) {
+                this.occupiedBy.teleportTo(this.getBlockPos().getX() + 0.5F, this.getBlockPos().getY(), this.getBlockPos().getZ() + 0.5F);
+            }
         } else {
             this.releaseTicks = 0;
             this.timeSinceRelease++;
