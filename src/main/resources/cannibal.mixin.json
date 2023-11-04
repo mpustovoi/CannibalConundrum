@@ -9,6 +9,7 @@
   "server": [
   ],
   "mixins": [
+    "AbstractVillagerMixin",
     "ItemMixin",
     "MeleeAttackMixin",
     "RangedBowAttackMixin"

@@ -1,5 +1,6 @@
 package net.clockwork.cannibal.level.entity.custom;
 
+import net.clockwork.cannibal.Clockwork;
 import net.clockwork.cannibal.level.item.ModItems;
 import net.clockwork.cannibal.level.sounds.ModSounds;
 import net.clockwork.cannibal.util.Misc;

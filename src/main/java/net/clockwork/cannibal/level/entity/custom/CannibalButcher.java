@@ -25,6 +25,8 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.loading.FMLLoader;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -45,12 +47,15 @@ public class CannibalButcher extends Monster implements GeoEntity {
     public int raiseTick = 0;
     public int chainsawSprint = 0;
     public final AttributeModifier chainsawSprintModifier = new AttributeModifier("chainsaw sprint", 0.2D, AttributeModifier.Operation.ADDITION);
-    public TickableChainsawSound sound = new TickableChainsawSound(ModSounds.STONE_SAW_REVED_LOOP.get(), this, true);
+    public TickableChainsawSound sound;
     public static final List<SoundEvent> HURT_SOUNDS = List.of(ModSounds.CANNIBAL_BUTCHER_HURT1.get(), ModSounds.CANNIBAL_BUTCHER_HURT2.get(), ModSounds.CANNIBAL_BUTCHER_HURT3.get());
     public static final List<SoundEvent> IDLE_SOUNDS = List.of(ModSounds.CANNIBAL_BUTCHER_IDLE1.get(), ModSounds.CANNIBAL_BUTCHER_IDLE2.get(), ModSounds.CANNIBAL_BUTCHER_IDLE3.get(), ModSounds.CANNIBAL_BUTCHER_IDLE4.get(), ModSounds.CANNIBAL_BUTCHER_IDLE5.get());
 
     public CannibalButcher(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        if (FMLLoader.getDist() == Dist.CLIENT) {
+            this.sound = new TickableChainsawSound(ModSounds.STONE_SAW_REVED_LOOP.get(), this, true);
+        }
     }
 
     @Override
