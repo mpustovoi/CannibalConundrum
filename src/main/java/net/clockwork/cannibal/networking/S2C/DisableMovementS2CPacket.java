@@ -26,5 +26,6 @@ public class DisableMovementS2CPacket extends Packet {
         context.enqueueWork(() -> {
             ClientData.enabledMovement = this.enabled;
         });
+        context.setPacketHandled(true);
     }
 }

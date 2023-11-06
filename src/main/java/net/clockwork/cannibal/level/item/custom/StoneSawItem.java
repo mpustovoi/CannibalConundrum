@@ -1,22 +1,19 @@
 package net.clockwork.cannibal.level.item.custom;
 
-import net.clockwork.cannibal.Clockwork;
 import net.clockwork.cannibal.level.item.client.renderer.StoneSawRenderer;
 import net.clockwork.cannibal.level.sounds.ModSounds;
 import net.clockwork.cannibal.networking.ModMessages;
-import net.clockwork.cannibal.networking.S2C.PlayTickableSoundS2CPacket;
+import net.clockwork.cannibal.networking.S2C.PlayChainsawSoundS2CPacket;
 import net.clockwork.cannibal.util.Misc;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.game.ClientboundSoundPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -26,15 +23,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
-import net.minecraftforge.common.ToolAction;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -92,14 +86,6 @@ public class StoneSawItem extends AxeItem implements GeoItem {
                 serverLevel.playSound(null, pPlayer.getOnPos().above(), event, SoundSource.PLAYERS, 1.0F, 1.0F);
             }
         } else {
-            if (pPlayer.level() instanceof ServerLevel serverLevel) {
-                SoundEvent event = ModSounds.STONE_SAW_REVED.get();
-                for (Player player : serverLevel.getServer().getPlayerList().getPlayers()) {
-                    if (player instanceof ServerPlayer serverPlayer) {
-                        ModMessages.sendToPlayer(new PlayTickableSoundS2CPacket(event, pPlayer, false), serverPlayer);
-                    }
-                }
-            }
             this.finishUsingItem(stack, pLevel, pPlayer);
         }
         return super.use(pLevel, pPlayer, pUsedHand);
@@ -109,14 +95,7 @@ public class StoneSawItem extends AxeItem implements GeoItem {
         CompoundTag tag = pStack.getOrCreateTag();
         if (!tag.contains("rev")) {
             tag.putBoolean("rev", true);
-        }
-        if (pLevel instanceof ServerLevel serverLevel && pLivingEntity instanceof Player player1) {
-            SoundEvent event = ModSounds.STONE_SAW_REVED_LOOP.get();
-            for (Player player : serverLevel.getServer().getPlayerList().getPlayers()) {
-                if (player instanceof ServerPlayer serverPlayer) {
-                    ModMessages.sendToPlayer(new PlayTickableSoundS2CPacket(event, player1, true), serverPlayer);
-                }
-            }
+            tag.putUUID("player", pLivingEntity.getUUID());
         }
         return super.finishUsingItem(pStack, pLevel, pLivingEntity);
     }
@@ -186,6 +165,9 @@ public class StoneSawItem extends AxeItem implements GeoItem {
         }
         if (tag.contains("cooldown")) {
             tag.remove("cooldown");
+        }
+        if (tag.contains("player")) {
+            tag.remove("player");
         }
     }
 
