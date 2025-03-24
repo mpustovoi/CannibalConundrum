@@ -5,6 +5,7 @@
   "creativemodetab.clockwork": "Cannibal Conundrum",
   "death.attack.cannibal.damage_source.bone_trap": "%1$s got trapped",
   "effect.cannibal.cannibalism": "Cannibalism",
+  "effect.cannibal.cannibalism.description": "§4§kDescription Missing§r",
   "entity.cannibal.cannibal": "Cannibal",
   "entity.cannibal.cannibal_butcher": "Cannibal Butcher",
   "item.cannibal.bone_mask": "Bone Mask",
